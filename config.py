@@ -1,0 +1,5 @@
+CELL_SIZE = 32
+
+FPS = 10
+
+MENU_SIZE = 980, 720

@@ -19,6 +19,7 @@ def main():
         pass
     cur_map = Map(cur_level)
     screen = set_screen(cur_map)
+    pg.display.set_caption("Think to get out")
     running = True
     while running:
         for event in pg.event.get():

@@ -15,7 +15,7 @@ def main(file_name):
     pg.init()
     screen = pg.display.set_mode(config.MENU_SIZE)
     pg.display.set_caption("Help")
-    help_font = pg.font.SysFont("Arial", 30)  # Шрифт меню
+    help_font = pg.font.SysFont("Arial", 30)
     with open(file_name, encoding='utf-8') as file:
         text = ''.join(file)
     blit_menu(screen, text, help_font)

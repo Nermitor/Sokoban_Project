@@ -13,6 +13,7 @@ def check_mouse(pos, rect):
 def main():
     pg.init()
     screen = pg.display.set_mode(config.MENU_SIZE)
+    pg.display.set_caption("Menu")
 
     font = pg.font.SysFont("Arial", 80)
 
@@ -27,6 +28,12 @@ def main():
 
     running = True
     while running:
+
+        pg.display.update()
+        screen.blit(f1, rect1)
+        screen.blit(f2, rect2)
+        screen.blit(f3, rect3)
+
         for event in pg.event.get():
             if event.type == pg.QUIT:
                 running = False
@@ -34,16 +41,9 @@ def main():
                 pos = event.pos
                 if check_mouse(pos, rect1):
                     game()
-                elif check_mouse(pos, rect2):
+                if check_mouse(pos, rect2):
                     hlp("help.txt")
                     main()
-                elif check_mouse(pos, rect3):
+                if check_mouse(pos, rect3):
                     running = False
 
-        pg.display.update()
-        screen.blit(f1, rect1)
-        screen.blit(f2, rect2)
-        screen.blit(f3, rect3)
-
-
-main()

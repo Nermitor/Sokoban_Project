@@ -10,13 +10,11 @@ def set_screen(mp):
     return pg.display.set_mode((mp.size_x * config.CELL_SIZE, mp.size_y * config.CELL_SIZE))
 
 
-def main():
+def main(save_existing):
     cur_level = 1
-    try:
+    if save_existing:
         with open("map.pickle", 'rb') as file:
             cur_level = pickle.load(file)
-    except FileNotFoundError:
-        pass
     cur_map = Map(cur_level)
     screen = set_screen(cur_map)
     pg.display.set_caption("Think to get out")
@@ -29,10 +27,13 @@ def main():
                     pickle.dump(cur_level, file)
 
             if event.type == pg.KEYDOWN:
+                if event.key == pg.K_r:
+                    cur_map = Map(cur_level)
                 win = cur_map.update()
                 if win:
                     cur_map = Map(cur_level := cur_level + 1)
                     set_screen(cur_map)
+
 
         screen.fill("black")
         cur_map.draw(screen)

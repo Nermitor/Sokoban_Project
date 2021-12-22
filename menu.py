@@ -1,5 +1,6 @@
-import pygame as pg
 import os.path as path
+
+import pygame as pg
 
 import config
 from game import main as game
@@ -15,7 +16,6 @@ def main():
     pg.init()
     screen = pg.display.set_mode(config.MENU_SIZE)
     pg.display.set_caption("Menu")
-
     font = pg.font.SysFont("Arial", 80)
     save_existing = path.exists("map.pickle")
 
@@ -52,5 +52,3 @@ def main():
                     pg.quit()
                 if check_mouse(pos, rect2) and save_existing or check_mouse(pos, rect1):
                     game(save_existing)
-
-
